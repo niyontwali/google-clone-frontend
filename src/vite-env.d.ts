@@ -7,14 +7,14 @@ export interface RouteObject {
   requiredRoles?: string[];
 }
 
-export interface LoginFormData {
+interface LoginFormData {
   email: string;
   password: string;
 }
 
 export const LoginPage: React.FC;
 
-export type SearchType = 'all' | 'images' | 'videos' | 'news';
+type SearchType = 'all' | 'images' | 'videos' | 'news';
 
 interface SearchResult {
   displayLink: string;
@@ -24,7 +24,28 @@ interface SearchResult {
   image?: string;
 }
 
-export interface SearchState {
+interface SearchState {
   query: string;
   searchType: SearchType;
+}
+
+interface ErrorItem {
+  id?: string;
+  searchQuery: string;
+}
+
+interface ErrorData {
+  message: string;
+  status: number;
+  data?: ErrorResponseData;
+}
+
+interface ErrorResponseData {
+  message?: string;
+  data?: { searchQuery: string }[];
+}
+
+interface FetchBaseQueryErrorWithData extends FetchBaseQueryError {
+  data: ErrorResponseData;
+  status: number;
 }

@@ -21,9 +21,12 @@ const Home: React.FC = () => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
-      dispatch(setQuery(query));
       navigate(`/search?q=${encodeURIComponent(query)}`);
     }
+  };
+
+  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setQuery(e.target.value));
   };
 
   const handleLuckySearch = () => {
@@ -35,39 +38,38 @@ const Home: React.FC = () => {
       <Header />
       <main className='flex-grow flex flex-col items-center justify-center px-4 sm:px-0 mb-14'>
         <img src={logo} alt='Google' className='w-[172px] sm:w-[272px] mb-8' />
-        <form onSubmit={handleSearch} className='w-full max-w-[584px] '>
+        <form onSubmit={handleSearch} className='w-full max-w-[584px]'>
           <div className='flex items-center border rounded-full p-3 shadow-sm hover:shadow-md px-[14px]'>
             <SearchSvg />
             <input
               type='text'
-              className='flex-grow focus:outline-none text-base  py-[2px]'
+              className='flex-grow focus:outline-none text-base py-[2px] mx-3'
               value={query}
-              onChange={e => dispatch(setQuery(e.target.value))}
+              onChange={handleQueryChange}
             />
-            <button type='submit' className='ml-3'>
+            <button type='button' className='ml-3'>
               <MicrophoneSvg />
             </button>
-            <button type='submit' className='ml-3'>
+            <button type='button' className='ml-3'>
               <CameraSvg />
             </button>
           </div>
+          <div className='mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center'>
+            <button
+              type='submit'
+              className='bg-[#f8f9fa] px-4 py-2 text-[15px] rounded-md border border-transparent hover:border hover:border-gray-300'
+            >
+              Google Search
+            </button>
+            <button
+              type='button'
+              onClick={handleLuckySearch}
+              className='bg-[#f8f9fa] px-4 py-2 text-[15px] rounded-md border border-transparent hover:border hover:border-gray-300'
+            >
+              I'm Feeling Lucky
+            </button>
+          </div>
         </form>
-
-        <div className='mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 '>
-          <button
-            type='button'
-            onClick={handleSearch}
-            className='bg-[#f8f9fa] px-4 py-2 text-[15px] rounded-md border border-transparent hover:border hover:border-gray-300'
-          >
-            Google Search
-          </button>
-          <button
-            onClick={handleLuckySearch}
-            className='bg-[#f8f9fa] px-4 py-2 text-[15px] rounded-md border border-transparent hover:border hover:border-gray-300'
-          >
-            I'm Feeling Lucky
-          </button>
-        </div>
 
         <p className='mt-8 text-[13px] text-center'>
           Google offered in:
