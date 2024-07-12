@@ -1,9 +1,8 @@
 import React, { ChangeEvent, useEffect, FormEvent, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, Search, X } from 'lucide-react';
 
-import { RootState } from '@/redux/store';
 import { setQuery } from '@/redux/reducers/searchSlice';
 import { logo, profile } from '@/assets';
 import SettingsSvg from './SettingsSvg';
@@ -18,17 +17,17 @@ const SearchResultHeader: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const { query } = useSelector((state: RootState) => state.search);
+  const [localQuery, setLocalQuery] = useState('');
 
   const handleQueryChange = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setQuery(e.target.value));
+    setLocalQuery(e.target.value);
   };
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
-    if (query.trim()) {
-      navigate(`/search?q=${encodeURIComponent(query)}`);
+    if (localQuery.trim()) {
+      dispatch(setQuery(localQuery));
+      navigate(`/search?q=${encodeURIComponent(localQuery)}`);
     }
   };
 
@@ -36,6 +35,7 @@ const SearchResultHeader: React.FC = () => {
     const searchParams = new URLSearchParams(location.search);
     const currentQuery = searchParams.get('q') || '';
     dispatch(setQuery(currentQuery));
+    setLocalQuery(currentQuery);
   }, [location.search, dispatch]);
 
   return (
@@ -54,7 +54,7 @@ const SearchResultHeader: React.FC = () => {
               <input
                 type='text'
                 className='flex-grow bg-transparent focus:outline-none text-sm'
-                value={query}
+                value={localQuery}
                 onChange={handleQueryChange}
                 placeholder='Search Google'
               />
@@ -88,7 +88,7 @@ const SearchResultHeader: React.FC = () => {
               <input
                 type='text'
                 className='flex-grow focus:outline-none text-[16px]'
-                value={query}
+                value={localQuery}
                 onChange={handleQueryChange}
               />
               <button type='button' className='ml-[15px]'>
@@ -132,18 +132,15 @@ const SearchResultHeader: React.FC = () => {
         <button className='mr-4 md:mr-[18px] py-3 md:py-[16px] border-b-[3px] border-blue-500 text-blue-500 whitespace-nowrap'>
           All
         </button>
-
         <button className='mr-4 md:mr-[18px] py-3 md:py-[16px] whitespace-nowrap'>
           Images
         </button>
-
         <button className='mr-4 md:mr-[18px] py-3 md:py-[16px] whitespace-nowrap'>
           Videos
         </button>
         <button className='mr-4 md:mr-[18px] py-3 md:py-[16px] whitespace-nowrap'>
           News
         </button>
-
         <button className='mr-4 md:mr-[18px] py-3 md:py-[16px] whitespace-nowrap'>
           Maps
         </button>
