@@ -14,7 +14,7 @@ export default function NotFound() {
         <p className='mt-2 mb-6 text-lg text-gray-600 font-sofia-regular'>
           Oops! The page you're looking for doesn't exist.
         </p>
-        <Button onClick={() => navigate(-1)} className='font-sofia-regular'>
+        <Button onClick={() => navigate(-1)} className='bg-primary text-white'>
           Go Back
         </Button>
       </div>

@@ -2,135 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'sofia-light';
-  src:
-    local('sofia_pro_light'),
-    url('/fonts/sofia_pro_light.otf') format('truetype');
-}
-
-@font-face {
-  font-family: 'sofia-regular';
-  src:
-    local('sofia_pro_regular'),
-    url('/fonts/sofia_pro_regular.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'sofia-bold';
-  src:
-    local('sofia_pro_bold'),
-    url('/fonts/sofia_pro_bold.otf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 207 58% 50%; /* #478cca */
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 43 93% 50%; /* #f6ba15 */
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 0 0% 60%; /* rgb(153, 153, 153) */
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 0 0% 60%; /* rgb(153, 153, 153) */
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 80%;
-    --ring: 207 58% 50%; /* #478cca */
-
-    --radius: 0.5rem;
+    --primary: #1a0dab;
+    --secondary: #34A853;
+    --tertiary: #FBBC05;
+    --quaternary: #EA4335;
+    --floor: #f2f2f2;
+    --light: #ffffff;
+    --dark: #202124;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 207 58% 50%; /* #478cca */
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 43 93% 53%; /* #f6ba15 */
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 0 0% 60%; /* rgb(153, 153, 153) */
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 0 0% 60%; /* rgb(153, 153, 153) */
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 0 0% 60%; /* rgb(153, 153, 153) */
-    --input: 0 0% 60%; /* rgb(153, 153, 153) */
-    --ring: 207 70% 40%; /* #2982d0 */
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-    font-family: 'sofia-regular', sans-serif;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'sofia-regular', sans-serif;
-    font-size: 14px;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'sofia-bold', sans-serif;
-    color: var(--title);
-  }
-
-  .light-text {
-    font-family: 'sofia-light', sans-serif;
-    color: var(--muted);
-  }
-
+  li,
+  Link,
   a {
-    color: #478cca;
-  }
-  a:hover {
-    text-decoration: underline;
+    @apply cursor-pointer hover:underline;
   }
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
 
-@media (max-width: 768px) {
-  .responsive-table td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    display: inline-block;
-    width: 120px;
-  }
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+html,
+body {
+  scroll-behavior: smooth !important;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--dark);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+strong, b {
+  font-weight: 700;
 }

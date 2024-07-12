@@ -8,7 +8,7 @@ const Error: React.FC = () => {
         An error occurred while searching. Please press the button below to
         retry.
       </p>
-      <Button onClick={() => window.location.reload()}>Retry</Button>
+      <Button className='bg-primary text-white' onClick={() => window.location.reload()}>Retry</Button>
     </div>
   );
 };

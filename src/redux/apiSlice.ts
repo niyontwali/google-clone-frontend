@@ -8,9 +8,9 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
   }),
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     search: builder.query({
-      query: (searchTerm) => ({
+      query: searchTerm => ({
         url: '/search',
         params: {
           q: searchTerm,
@@ -20,6 +20,4 @@ export const apiSlice = createApi({
   }),
 });
 
-export const {
-  useSearchQuery,
-} = apiSlice;
+export const { useSearchQuery } = apiSlice;
