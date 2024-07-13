@@ -1,4 +1,4 @@
-# Google Clone
+# Google Clone Frontend
 
 This repository contains the source code for the Google Clone Project, built using React, TypeScript, and Redux for state management. Though it is a smaller project, I have ensured that every folder and file is organized following best practices to illustrate what a project with an optimal structure looks like.
 
@@ -25,7 +25,7 @@ You can view the live demo of the Google Clone project at [google-clone.nijohn.d
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/niyontwali/google-clone.git
+    git clone https://github.com/niyontwali/google-clone-frontend.git
     cd google-clone
     ```
 
@@ -65,10 +65,12 @@ After starting the development server, the application will run on port 5173 by 
 ## Screenshots
 
 ### Home Page
-![Home Page](screenshots/home.png)
+<img width="1470" alt="Screenshot 2024-07-12 at 22 41 33" src="https://github.com/user-attachments/assets/107d37fa-e28a-4d51-9ea8-033b5215b300">
+
 
 ### Search Results
-![Search Results](screenshots/search-results.png)
+<img width="1470" alt="Screenshot 2024-07-12 at 22 42 13" src="https://github.com/user-attachments/assets/6a4e0b21-7e62-4425-abf3-13e8d1d68ded">
+
 
 ## Technologies Used
 
@@ -103,10 +105,10 @@ google-clone/
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## Contact
 
 John Niyontwali - [nijohn0006@gmail.com](mailto:nijohn0006@gmail.com)
 
-Project Link: [https://github.com/niyontwali/google-clone](https://github.com/niyontwali/google-clone)
+Projected Hosted link: [https://google-clone.nijohn.dev](https://google-clone.nijohn.dev)
