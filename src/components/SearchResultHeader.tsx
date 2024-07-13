@@ -16,13 +16,19 @@ const SearchResultHeader: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+
+  // State to manage the visibility of the mobile menu
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // State to manage the local search query
   const [localQuery, setLocalQuery] = useState('');
 
+  // Handle the change of the search query input
   const handleQueryChange = (e: ChangeEvent<HTMLInputElement>) => {
     setLocalQuery(e.target.value);
   };
 
+  // Handle the search form submission
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
     if (localQuery.trim()) {
@@ -31,6 +37,7 @@ const SearchResultHeader: React.FC = () => {
     }
   };
 
+  // Sync the local search query with the query in the URL
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const currentQuery = searchParams.get('q') || '';
@@ -65,6 +72,7 @@ const SearchResultHeader: React.FC = () => {
           </form>
         </div>
         <div className='relative w-[30px] h-[30px]'>
+          {/* Profile picture with gradient border */}
           <div className='absolute inset-0 bg-gradient-to-r from-blue-500 via-red-500 to-green-500 rounded-full'></div>
           <div className='absolute inset-0.5 bg-white rounded-full'></div>
           <div className='absolute inset-1'>
@@ -114,6 +122,7 @@ const SearchResultHeader: React.FC = () => {
             <MoreSvg />
           </button>
           <div className='relative w-[40px] h-[40px]'>
+            {/* Profile picture with gradient border */}
             <div className='absolute inset-0 bg-gradient-to-r from-blue-500 via-red-500 to-green-500 rounded-full'></div>
             <div className='absolute inset-0.5 bg-white rounded-full'></div>
             <div className='absolute inset-1'>
@@ -127,7 +136,7 @@ const SearchResultHeader: React.FC = () => {
         </div>
       </div>
 
-      {/* Navigation */}
+      {/* Navigation Bar */}
       <nav className='flex overflow-x-auto md:px-[180px] text-[13px] md:text-[15px] text-[#5f6368] border-b px-8'>
         <button className='mr-4 md:mr-[18px] py-3 md:py-[16px] border-b-[3px] border-blue-500 text-blue-500 whitespace-nowrap'>
           All

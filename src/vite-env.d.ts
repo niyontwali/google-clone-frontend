@@ -1,20 +1,11 @@
 /// <reference types="vite/client" />
 
-export interface RouteObject {
+interface RouteObject {
   path: string;
   element: React.ReactNode;
   authRequired?: boolean;
   requiredRoles?: string[];
 }
-
-interface LoginFormData {
-  email: string;
-  password: string;
-}
-
-export const LoginPage: React.FC;
-
-type SearchType = 'all' | 'images' | 'videos' | 'news';
 
 interface SearchResult {
   displayLink: string;
@@ -26,12 +17,7 @@ interface SearchResult {
 
 interface SearchState {
   query: string;
-  searchType: SearchType;
-}
-
-interface ErrorItem {
-  id?: string;
-  searchQuery: string;
+  searchType?: SearchType;
 }
 
 interface ErrorData {

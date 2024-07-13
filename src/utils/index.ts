@@ -6,15 +6,6 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
-// decode token function
-export const parseJwt = (token: string) => {
-  try {
-    return JSON.parse(atob(token.split('.')[1]));
-  } catch (e) {
-    return null;
-  }
-};
-
 // truncate string texts
 export const truncateString = (word: string, sliceNo: number) => {
   if (word.length > sliceNo) {
@@ -26,4 +17,11 @@ export const truncateString = (word: string, sliceNo: number) => {
 // get network status
 export const getNetworkStatus = () => {
   return window.navigator.onLine;
+};
+
+export const getDisplayLink = (link: string) => {
+  if (!link.startsWith('http://') && !link.startsWith('https://')) {
+    return `http://${link}`;
+  }
+  return link;
 };

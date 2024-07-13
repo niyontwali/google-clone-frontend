@@ -1,5 +1,4 @@
 import { HomePage, NotFoundPage, SearchResultsPage } from '@/pages';
-import { RouteObject } from '@/vite-env';
 
 const routes: RouteObject[] = [
   { path: '/', element: <HomePage /> },

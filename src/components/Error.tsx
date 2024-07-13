@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from './Button';
-import { ErrorData } from '@/vite-env';
 import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
 
@@ -10,8 +9,6 @@ interface ErrorProps {
 
 const Error: React.FC<ErrorProps> = ({ errorData }) => {
   const navigate = useNavigate();
-
-  console.log({ errorData });
 
   const uniqueItems = errorData?.data?.data
     ? Array.from(new Set(errorData.data.data.map(item => item.searchQuery)))
@@ -42,12 +39,17 @@ const Error: React.FC<ErrorProps> = ({ errorData }) => {
           ))}
         </div>
       ) : (
-        <Button
-          className='bg-primary text-white mt-4'
-          onClick={() => window.location.reload()}
-        >
-          Retry
-        </Button>
+        <div className='w-full max-w-4xl grid grid-cols-1 gap-4 sm:grid-cols-3'>
+          <p className='text-red-600 text-md mb-6 max-w-5xl text-center pt-6'>
+            An error occured while searching!
+          </p>
+          <Button
+            className='bg-primary text-white mt-4'
+            onClick={() => window.location.reload()}
+          >
+            Retry
+          </Button>
+        </div>
       )}
     </div>
   );

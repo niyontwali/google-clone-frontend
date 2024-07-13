@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { SerializedError } from '@reduxjs/toolkit';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '../redux/store';
 import { setQuery } from '../redux/reducers/searchSlice';
 import { useSearchQuery } from '../redux/apiSlice';
-import { ErrorData, FetchBaseQueryErrorWithData, SearchResult } from '@/vite-env';
 import Spinner from '@/components/Spinner';
 import Error from '@/components/Error';
 import SearchResultHeader from '@/components/SearchResultHeader';
 import Footer from '@/components/Footer';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { SerializedError } from '@reduxjs/toolkit';
+import { getDisplayLink } from '@/utils';
 
+// Define the SearchResults component
 const SearchResults: React.FC = () => {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -24,6 +25,7 @@ const SearchResults: React.FC = () => {
     refetch,
   } = useSearchQuery(query);
 
+  // Effect to update the query from URL parameters
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const q = params.get('q');
@@ -32,16 +34,19 @@ const SearchResults: React.FC = () => {
     }
   }, [location.search, dispatch, query]);
 
+  // Effect to refetch search results when the query changes
   useEffect(() => {
     if (query) {
       refetch();
     }
   }, [query, refetch]);
 
+  // Show a spinner while loading
   if (isLoading) {
     return <Spinner className='flex justify-center items-center gap-3' />;
   }
 
+  // Function to handle errors from the server
   const handleError = (
     error: FetchBaseQueryError | SerializedError
   ): ErrorData | undefined => {
@@ -59,22 +64,12 @@ const SearchResults: React.FC = () => {
     return undefined;
   };
 
-  // Usage
+  // Show an error component if there's an error
   if (error) {
     return <Error errorData={handleError(error)} />;
   }
 
-  if (error) {
-    return <Error errorData={error} />;
-  }
-
-  const getDisplayLink = (link: string) => {
-    if (!link.startsWith('http://') && !link.startsWith('https://')) {
-      return `http://${link}`;
-    }
-    return link;
-  };
-
+  // Render the search results
   return (
     <div className='min-h-screen flex flex-col'>
       <SearchResultHeader />
