@@ -39,17 +39,12 @@ const Error: React.FC<ErrorProps> = ({ errorData }) => {
           ))}
         </div>
       ) : (
-        <div className='w-full max-w-4xl grid grid-cols-1 gap-4 sm:grid-cols-3'>
-          <p className='text-red-600 text-md mb-6 max-w-5xl text-center pt-6'>
-            An error occured while searching!
-          </p>
-          <Button
-            className='bg-primary text-white mt-4'
-            onClick={() => window.location.reload()}
-          >
-            Retry
-          </Button>
-        </div>
+        <Button
+          className='bg-primary text-white mt-4'
+          onClick={() => window.location.reload()}
+        >
+          Retry
+        </Button>
       )}
     </div>
   );
